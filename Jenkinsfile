@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools { 
+        maven 'maven-3.9.9' 
+    } 
     stages {
 
         stage('Checkout Code') {
@@ -14,6 +16,12 @@ pipeline {
                 }
             }
         }
+
+        stage('Clean and Install') { 
+            steps { 
+                sh 'mvn clean install'
+            }
+        } 
     
     }
 }
